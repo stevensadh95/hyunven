@@ -1,0 +1,51 @@
+.logo{
+    font-family: 'Krona One', sans-serif;
+}
+
+.jumbotron > h1, .jumbotron > h2 {
+    display: inline;    
+    color: #00072d;
+}
+
+.jumbotron>h1{
+    font-size: 70px;
+}
+
+.jumbotron>h2{
+    font-size: 40px;
+}
+
+.jumbotron{
+    background-color: #0e6ba8;
+    text-align: center;
+    margin: -10px;
+}
+
+.navbar-light{
+    background-color: #a6e1fa;
+}
+
+.navbar-light .navbar-nav .nav-link{
+    color: rgba(0, 7, 45, .5);
+}
+
+.nav-link:focus{
+    color: rgba(0, 7, 45) !important;
+}
+
+body{
+    background-color: #00072d;
+}
+
+.container{
+    background-color: white;
+    min-height: 20px;
+    margin-top: 10px;
+}
+
+.container.content{
+    border-radius: 10px;
+    margin-top: -10px;
+    padding-bottom: 10px;
+    background-color: white;
+}
