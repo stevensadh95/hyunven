@@ -82,3 +82,12 @@ body{
 .short{
     min-height: 0px !important;
 }
+.title{
+    border-bottom: 1px solid black;
+    margin-bottom: 5px;
+}
+
+#catalogue th{
+    color: white;
+    background-color: #a6e1fa;
+}
