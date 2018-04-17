@@ -27,21 +27,19 @@
                             <a class="nav-link" href="{{ url_for('index')}}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
+                            <a class="nav-link" href="{{ url_for('about')}}">About</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="catalogue">Catalogue</a>
-                        </li>
+
                     </ul>
                 </div>
                 <div class="pull-right">
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('index') }}">Log Out</a>
+                            <a class="nav-link" href="{{ url_for('login') }}">Log In</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('register') }}">cart</a>
+                            <a class="nav-link" href="{{ url_for('register') }}">Register</a>
                         </li>
                     </ul>
                 </div>
