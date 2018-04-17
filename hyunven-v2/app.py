@@ -1,4 +1,4 @@
-from flask import Flask,render_template,redirect,url_for,request
+from flask import Flask,render_template,redirect,url_for,request,flash
 from flask_sqlalchemy import SQLAlchemy
 import tempfile
 import os.path
@@ -120,6 +120,12 @@ def E30CYS():
 #End Functions
 #End Catalogue
 
+
+@app.route('/index_protected')
+# @login_required
+def index_protected():
+    return render_template("index_protected.html")
+
 @app.route('/register', methods=['GET','POST'])
 def register():
     form = SignupForm()
@@ -135,7 +141,7 @@ def register():
                 db.session.add(new_user)
                 db.session.commit()
                 login_user(new_user)
-                return "user added"
+                return redirect("/index_protected")
 
         else:
             return "form didn't validate"
@@ -154,11 +160,14 @@ def login():
             if user:
                 if user.password == form.password.data:
                     login_user(user)
-                    return "User logged in"
+                    return redirect(url_for('index_protected'))
                 else:
-                    return "Wrong password"
+                    flash("Incorrect Password")
+                    return redirect("/login")
             else:
-                return "No User with that username"
+                flash("No user found with that username")
+                return redirect("/login")
+
     else:
         return "form not validated"
 
@@ -168,10 +177,7 @@ if __name__ == '__main__':
     app.run(port=5000, host='localhost', debug=True)
 
 
-@app.route('/protected')
-@login_required
-def protected():
-    return "protected area"
+
 
 
 @app.route("/logout")

@@ -36,21 +36,13 @@
                 </div>
                 <div class="pull-right">
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                        {% if not session.logged_in %}
+
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('login') }}">Log In</a>
+                            <a class="nav-link" href="{{ url_for('index') }}">Log Out</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('register') }}">Register</a>
+                            <a class="nav-link" href="{{ url_for('register') }}">cart</a>
                         </li>
-                        {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Cart</a>                       
-                        </li>
-                        <li class="nav-item">
-                                <a class="nav-link" href="#">Log Out</a>
-                        </li>
-                        {% endif %}
                     </ul>
                 </div>
         </nav>

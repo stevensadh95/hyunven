@@ -31,10 +31,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('about') }}">About</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('catalogue') }}">Catalogue</a>
-                </li>
-            </ul>
+                </ul>
+
+                  <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            You must be logged in to view our catalogue
+            </div>
+
+
         </div>
         <div class="pull-right">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
