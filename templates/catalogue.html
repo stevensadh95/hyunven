@@ -1,0 +1,78 @@
+{% extends 'menu.html' %}
+{% block content %}
+<div class="container-fluid">
+    <br>
+    <div class="container text-center ">
+        <div class="row"><h4 class="col">Engines</h4></div>
+        <div class="row">
+            <nav class="nav col justify-content-center">
+                <a class="nav-link active" href="{{ url_for('E4CYS') }}">E4CYS Series</a>
+                <a class="nav-link" href="{{ url_for('E16CYS') }}">E16CYS Series</a>
+                <a class="nav-link" href="{{ url_for('E30CYS') }}">E30CYS Series</a>
+            </nav>
+        </div>
+    </div>
+    <div class="container jumbotron">
+        <div class="row text-center title"><h5 class="col">Same accross all Engine Blocks</h5></div>
+        <div class="row">
+            <table class="col-md-8 offset-md-2 table-bordered text-center">
+                {% for title in table.keys() %}
+                <tr>
+                    <th>{{ title }}</th>
+                    <td>{{ table[title] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="row text-center title"><h5 class="col">Compare</h5></div>
+        <div class="row">
+            <table class="col-md-8 offset-md-2 table-bordered text-center">
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>PS/RPM</th>
+                        <th>Aspiration</th>
+                        <th>Compression Ratio</th>
+                        <th>Dry Weight(kg)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for m in models.keys() %}
+                    <tr>
+                        <th>{{ m }}</th>
+                        <td>{{ models[m][0] }}</td>
+                        <td>{{ models[m][1] }}</td>
+                        <td>{{ models[m][2] }}</td>
+                        <td>{{ models[m][3] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="row text-center title"><h5 class="col">Prices (USD + FOB Miami)</h5></div>
+        <div class="row">
+            <table class="col-md-8 offset-md-2 table-bordered text-center">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th >STD ENGINE</th>
+                        <th>STD GEARBOX*</th>
+                        <th>STERN ARRAG**</th>
+                        <th>ACC & PARTS***</th>
+                        <th>COMPLETE SET</th>
+                    </tr>
+                </thead>
+                {% for p in prices.keys() %}
+                <tr>
+                    <th>{{ p }}</th>
+                    <td>{{ prices[p][0] }}</td>
+                    <td>{{ prices[p][1] }}</td>
+                    <td>{{ prices[p][2] }}</td>
+                    <td>{{ prices[p][3] }}</td>
+                    <td>{{ prices[p][4] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}
