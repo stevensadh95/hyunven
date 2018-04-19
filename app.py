@@ -51,9 +51,6 @@ def index(name=None):
 def about(name=None):
     return render_template('about.html', name=name)
 
-@app.route('/about_protected')
-def about_protected(name=None):
-    return render_template('about_protected.html', name=name)
 
 #Catalogue
 #Variables
@@ -125,11 +122,6 @@ def E30CYS():
 #End Catalogue
 
 
-@app.route('/index_protected')
-# @login_required
-def index_protected():
-    return render_template("index_protected.html")
-
 @app.route('/register', methods=['GET','POST'])
 def register():
     form = SignupForm()
@@ -145,7 +137,7 @@ def register():
                 db.session.add(new_user)
                 db.session.commit()
                 login_user(new_user)
-                return redirect("/index_protected")
+                return redirect(url_for("index"))
 
         else:
             return "form didn't validate"
@@ -164,7 +156,7 @@ def login():
             if user:
                 if user.password == form.password.data:
                     login_user(user)
-                    return redirect(url_for('index_protected'))
+                    return redirect(url_for('index'))
                 else:
                     flash("Incorrect Password")
                     return redirect("/login")
@@ -176,6 +168,16 @@ def login():
         return "form not validated"
 
 
+@app.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("not found.html")
+
 if __name__ == '__main__':
     init_db()
     app.run(port=5000, host='localhost', debug=True)
@@ -184,10 +186,6 @@ if __name__ == '__main__':
 
 
 
-@app.route("/logout")
-@login_required
-def logout():
-    logout_user()
-    return "Logged out"
+
 
 
